@@ -4,13 +4,12 @@ program main
     character (len = 15) :: first_name
     !
     write (*, '(a)') 'Hello world'
-    print *, ''
     !
     do
-      write (*, '(a)', advance='no') '> '
+      write (*, '(a, 1x)', advance='no') '>'
     
       read (*, *) first_name 
-      print "(1x,a)",first_name
+      write (*, '(a)') first_name
     end do
-    
+
 end program main
