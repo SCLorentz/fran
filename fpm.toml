@@ -1,0 +1,10 @@
+name = "fortran-test"
+version = "1.0.0"
+license = "MIT"
+
+[dependencies]
+stdlib = { git="https://github.com/fortran-lang/stdlib", branch="stdlib-fpm" }
+
+[build]
+program = "./src/main.f90"
+compiler = "gfortran"
