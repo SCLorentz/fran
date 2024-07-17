@@ -4,8 +4,7 @@ program main
     implicit none
     ! declarations
     character(len=*), parameter :: input = 'hello world!'
-    character (len = 20) :: first_name
-    character(len = 20) :: charArray
+    character (len = 20) :: first_name, charArray
     !
     INTEGER :: i, n
     ! structure
@@ -18,15 +17,13 @@ program main
         read (*, *) first_name 
         !call log(first_name)
 
+        first_name = TRIM(first_name)
+        charArray = ''
+        !
         do i = 1, LEN_TRIM(first_name)
-            !
-            if (first_name(i:i) .NE. 'e') then  ! Check if character is not 'e'
-                WRITE(*, '(a)') TRIM(first_name(i:i)) !--> retorna cada um dos caracteres da string, menos os 'e'
-                charArray = charArray // TRIM(first_name(i:i))
-            endif
-            !
+            charArray = TRIM(charArray) // first_name(I:I)
         end do
-        WRITE(*,'(a)') charArray !--> retorna '��o�=R'
+        WRITE(*,'(A)') charArray
         ! end of the looop
     end do
 contains
