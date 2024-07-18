@@ -7,7 +7,7 @@ program main
     character (len = 255) :: input
     CHARACTER(LEN=12), DIMENSION(:), ALLOCATABLE :: splited
     !
-    INTEGER :: i, n
+    INTEGER :: i
     ! structure
     call write(msg)
     ! my loop
@@ -50,7 +50,7 @@ contains
         write(res,'(i10)') n
     end function to_string
     !
-    SUBROUTINE split(str, result)
+    subroutine split(str, result)
         character(LEN=*), INTENT(IN) :: str
         character(LEN=*), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: result
         integer :: i, j, n
