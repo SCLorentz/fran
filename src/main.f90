@@ -4,7 +4,9 @@ program main
     implicit none
     ! declarations
     character(len = *), parameter :: msg = 'hello world!'
-    character (len = 20) :: input, charArray, num_as_string
+    character (len = 20) :: charArray, num_as_string
+    ! input
+    character (len = 255) :: input
     !
     INTEGER :: i, n
     ! structure
@@ -14,17 +16,16 @@ program main
         ! handle with the console
         write (*, '(a, 1x)', advance='no') '>'
         ! read msg
-        read (*, '(a)') input
-        !call write(input)
+        call read(input)
 
-        input = TRIM(input)
         charArray = ''
         !
         n = 0
         do i = 1, len(input)
             charArray = TRIM(charArray) // input(I:I)
-            if (charArray(i:i) == 'f') then
+            if (charArray(i:i) == '-') then
                 n = n + 1
+                charArray = TRIM(charArray) // '*'
             end if
         end do
         !
@@ -33,7 +34,7 @@ program main
         end if
         !
         call write(charArray)
-        ! end of the looop
+        ! end of the loop
     end do
 contains
     ! functions here
@@ -46,6 +47,11 @@ contains
         write (*, '(a)') achar(27) // '[32m' // msg // achar(27) // '[0m'
         ! end of the function
     end subroutine write
+
+    subroutine read(input)
+        character(len = *), intent(out) :: input
+        read (*, '(a)') input
+    end subroutine read
     
     ! convert integer to string
     function to_string(n) result(res)
