@@ -4,9 +4,8 @@ program main
     implicit none
     ! declarations
     character(len = *), parameter :: msg = 'hello world!'
-    character (len = 20) :: charArray, num_as_string
-    ! input
     character (len = 255) :: input
+    CHARACTER(LEN=12), DIMENSION(:), ALLOCATABLE :: splited
     !
     INTEGER :: i, n
     ! structure
@@ -17,23 +16,13 @@ program main
         write (*, '(a, 1x)', advance='no') '>'
         ! read msg
         call read(input)
-
-        charArray = ''
         !
-        n = 0
-        do i = 1, len(input)
-            charArray = TRIM(charArray) // input(I:I)
-            if (charArray(i:i) == '-') then
-                n = n + 1
-                charArray = TRIM(charArray) // '*'
-            end if
+        call write(input)
+        call split(input, splited)
+        
+        do i = 1, size(splited)
+            call write(splited(i))
         end do
-        !
-        if (n > 0) then
-            call write(to_string(n))
-        end if
-        !
-        call write(charArray)
         ! end of the loop
     end do
 contains
@@ -56,8 +45,40 @@ contains
     ! convert integer to string
     function to_string(n) result(res)
         integer, intent(in) :: n
-        character(len=10) :: res
+        character(len = 10) :: res
+        !
         write(res,'(i10)') n
     end function to_string
+    !
+    SUBROUTINE split(str, result)
+        character(LEN=*), INTENT(IN) :: str
+        character(LEN=*), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: result
+        integer :: i, j, n
+        character(LEN=LEN(str)) :: word
+    
+        n = 1
+        do i = 1, LEN_TRIM(str)
+            if (str(i:i) == ' ') then
+                n = n + 1
+            end if
+        end do
+    
+        allocate(result(n))
+        i = 1
+        j = 1
+        do while (i <= LEN_TRIM(str))
+            if (str(i:i) /= ' ') then
+                word(j:j) = str(i:i)
+                j = j + 1
+            else
+                result(n) = word(1:j-1)
+                n = n - 1
+                j = 1
+                word = ''
+            end if
+            i = i + 1
+        end do
+        result(1) = word(1:j-1)
+    end subroutine split
 ! end of the program
 end program main
