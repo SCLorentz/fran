@@ -5,7 +5,7 @@ program main
     ! declarations
     character(len = *), parameter :: msg = 'hello world!'
     character (len = 255) :: input
-    CHARACTER(LEN=12), DIMENSION(:), ALLOCATABLE :: splited
+    CHARACTER(LEN = 12), DIMENSION(:), ALLOCATABLE :: splited
     !
     INTEGER :: i
     ! structure
@@ -51,21 +51,25 @@ contains
     end function to_string
     !
     subroutine split(str, result)
-        character(LEN=*), INTENT(IN) :: str
-        character(LEN=*), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: result
+        ! declarations
+        character(LEN = *), INTENT(IN) :: str
+        character(LEN = *), DIMENSION(:), ALLOCATABLE, INTENT(OUT) :: result
         integer :: i, j, n
-        character(LEN=LEN(str)) :: word
-    
+        character(LEN = LEN(str)) :: word
+        ! split the string
         n = 1
         do i = 1, LEN_TRIM(str)
-            if (str(i:i) == ' ') then
-                n = n + 1
+            if (str(i:i) /= ' ') then
+                cycle
             end if
+            n = n + 1
         end do
     
         allocate(result(n))
+        ! variables for the loop
         i = 1
         j = 1
+        ! loop
         do while (i <= LEN_TRIM(str))
             if (str(i:i) /= ' ') then
                 word(j:j) = str(i:i)
@@ -78,7 +82,7 @@ contains
             end if
             i = i + 1
         end do
-        result(1) = word(1:j-1)
+        result(1) = word(1:j - 1)
     end subroutine split
 ! end of the program
 end program main
