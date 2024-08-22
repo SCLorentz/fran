@@ -1,0 +1,17 @@
+FROM alpine:latest
+
+# Instalar ferramentas básicas
+#RUN apk add --no-cache build-base
+
+# Copiar a AppImage para o container
+#COPY minha_appimage.AppImage /opt/
+RUN sudo apt install gfortran
+
+# Adicionar a AppImage ao PATH
+#ENV PATH="/opt:$PATH"
+
+# Definir o diretório de trabalho
+WORKDIR /workspace
+
+# Comando padrão para iniciar o container
+CMD ["/bin/sh"]
