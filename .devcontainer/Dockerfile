@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y build-essential
 RUN apt-get install -y git
 # npm
 RUN apt-get install -y gfortran
+# fpm
+RUN apt-get install -y python3-pip
+RUN pip install fpm
 
 # install app
 COPY cmd/run.sh /
