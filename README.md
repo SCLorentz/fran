@@ -13,4 +13,4 @@ If you want to develop your own version of this game, you should get docker inst
 
 ### Start the server
 
-To start the server, use: `fpm run`, this command will make shure that everything necessary to make this project work is being executed and is working correctly.
+To start the server, use: `run`, this command will make shure that everything necessary to make this project work is being executed and is working correctly.
