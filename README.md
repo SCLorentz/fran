@@ -1,4 +1,4 @@
-# fortran-test
+# FRAN
 
 Just some tests made in fortran. This isn't a very serious project, but I will try to keep it updated.
 
