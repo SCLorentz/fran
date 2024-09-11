@@ -1,10 +1,18 @@
-name = "fortran-test"
-version = "1.0.0"
-license = "MIT"
-
-[dependencies]
-stdlib = { git="https://github.com/fortran-lang/stdlib", branch="stdlib-fpm" }
-
+name = "fran"
+version = "0.1.0"
+license = "license"
+author = "Felipe S.C. Lorentz"
+maintainer = "113468900+SCLorentz@users.noreply.github.com"
+copyright = "Copyright 2024, Felipe S.C. Lorentz"
 [build]
-program = "./src/main.f90"
-compiler = "gfortran"
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+[install]
+library = false
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
