@@ -4,7 +4,7 @@ WORKDIR /app
 # install app dependencies
 RUN apt-get update && apt-get install -y build-essential
 RUN apt-get install -y git
-# npm
+# fortran
 RUN apt-get install -y gfortran
 # fpm
 RUN apt-get install -y python3-pip

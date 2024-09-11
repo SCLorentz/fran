@@ -2,6 +2,10 @@
 
 Just some tests made in fortran. This isn't a very serious project, but I will try to keep it updated.
 
+## Warn!
+
+FPM (fortran package manager) isn't avaliable for the ARM archtecture, if you are using a mac you will have problems executing this project localy. So on this cases, I will try to use gfortran again automaticly. And let's hope that fpm add compatibility with ARM.
+
 ## Develop by your own
 
 ### My recomendations - Docker
